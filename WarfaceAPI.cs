@@ -7,11 +7,11 @@ namespace noname //Поставьте пространство имен кото
 {
     class WarfaceAPI
     {
-        public static void CheckStats(string nickname, int server) //RU Server = 0, EU Server = 1.
+        public static void CheckStats(string nickname)
         {
             try
             {
-                HttpWebResponse response = (HttpWebResponse)WebRequest.Create($"http://api.warface.ru/user/stat/?name={nickname}&server={server}").GetResponse();
+                HttpWebResponse response = (HttpWebResponse)WebRequest.Create($"http://api.warface.ru/user/stat/?name={nickname}&server=0").GetResponse();
                 JSON playerinfo = JsonConvert.DeserializeObject<JSON>(new StreamReader(response.GetResponseStream()).ReadToEnd());
                 response.Close();
 
